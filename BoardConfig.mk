@@ -22,8 +22,8 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom 
-BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += cma=32M@0-0xffffffff loglevel=7
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -31,13 +31,20 @@ BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x02000000
 BOARD_RAMDISK_OFFSET     := 0x02200000
-TARGET_PREBUILT_KERNEL := device/leeco/zl1/prebuilt/Image.gz-dtb
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/leeco/msm8996
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_CONFIG := recovery_zl1_defconfig
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 # /proc/partitions * 2 * BLOCK_SIZE (512) = size in bytes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 58139029504
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3154116608
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 57436708864
 BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 
